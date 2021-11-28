@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
@@ -8,7 +6,7 @@ import Home from './screens/Home';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
-  uri: 'api.spacex.land/graphql',
+  uri: 'https://api.spacex.land/graphql',
   cache: new InMemoryCache()
 });
 
