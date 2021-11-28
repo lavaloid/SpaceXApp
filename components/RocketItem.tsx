@@ -6,7 +6,7 @@ import { StyleSheet, View, ImageBackground, Text, TextInput, useWindowDimensions
  */
 export default function RocketItem (props: any) {
     return (
-        <TouchableHighlight onPress={() => {}}>
+        <TouchableHighlight onPress={props.onPress}>
             <View style={styles.itemContainer}>
                 <View style={styles.itemContentContainer}>
                     <Text style={styles.itemTitle}>

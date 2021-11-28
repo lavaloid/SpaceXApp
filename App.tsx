@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Home from './screens/Home';
+import RocketDetail from './screens/RocketDetail';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -18,6 +19,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Details" component={RocketDetail} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>

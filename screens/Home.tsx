@@ -18,7 +18,7 @@ const ROCKETS_QUERY = gql`
 /**
  * The content of the home screen. Includes loading and error handling.
  */
-const HomeContent = () => {
+const HomeContent = (props: any) => {
     const { data, error, loading } = useQuery(ROCKETS_QUERY);
 
     if (loading) {
@@ -37,7 +37,10 @@ const HomeContent = () => {
         <FlatList
             data={data.rockets}
             renderItem={({ item }) => (
-                <RocketItem name={item.name} country={item.country} />
+                <RocketItem name={item.name} country={item.country}
+                    onPress={() => {
+                        props.navigation.navigate('Details', { id: item.id.toString() })
+                    }} />
         )}
         keyExtractor={(item) => item.id.toString()}
         style={styles.itemListContainer}
@@ -51,7 +54,7 @@ const HomeContent = () => {
 export default function Home({ navigation }: { navigation: any }) {
     return (
         <HomeContainer>
-            <HomeContent />
+            <HomeContent navigation={navigation} />
         </HomeContainer>
     );
 }
