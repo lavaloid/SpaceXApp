@@ -1,23 +1,48 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, FlatList, View, Image, TouchableHighlight, useWindowDimensions, Button } from 'react-native';
+import { StyleSheet, Text, FlatList, View, Image, TouchableHighlight, useWindowDimensions, Button, Modal, TouchableWithoutFeedback } from 'react-native';
 
 /**
  * The content of the home screen. Includes loading and error handling.
  */
 const ImageLoader = (props: any) => {
     const [pageNumber, setPageNumber] = useState(0);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalImageURI, setModalImageURI] = useState('');
+
     const windowWidth = useWindowDimensions().width;
+    const windowHeight = useWindowDimensions().height;
     const IMAGE_PER_PAGE = 24;
     const pageNum = Math.ceil(props.images.length / IMAGE_PER_PAGE)
 
     return (
         <View style={styles.container}>
+            <Modal animationType='fade'
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(false);
+                }}
+            >
+                <TouchableWithoutFeedback onPress={() => { setModalVisible(false) }}>
+                    <View style={styles.modalContainer}>
+                        <Image source={{ uri: modalImageURI }}
+                            style={{
+                                width: windowWidth,
+                                height: windowHeight,
+                                resizeMode: 'contain',
+                            }} />
+                    </View>
+                </TouchableWithoutFeedback>
+            </Modal>
             <FlatList
                 data={props.images.slice(pageNumber * IMAGE_PER_PAGE, pageNumber * IMAGE_PER_PAGE + IMAGE_PER_PAGE)}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableHighlight onPress={() => { }}>
+                        <TouchableHighlight onPress={() => {
+                            setModalImageURI(item);
+                            setModalVisible(true);
+                        }}>
                             <Image source={{ uri: item }}
                                 style={{
                                     width: windowWidth / 3,
@@ -92,6 +117,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'flex-start',
         flexDirection: 'column',
+    },
+    modalContainer: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
     },
     separator: {
         marginVertical: 30,
