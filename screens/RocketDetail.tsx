@@ -130,7 +130,7 @@ const RocketDetailLoader = (props: any) => {
                         onPress={() => { Linking.openURL(rocket.rocket.wikipedia); }}
                         color='#6688ff' />
                     <Button title='View images'
-                        onPress={() => { }}
+                        onPress={() => { props.navigation.navigate('Images', { images: images })}}
                         color='#555555' />
                     <Button title='Search launches'
                         onPress={() => { }}
@@ -175,7 +175,7 @@ const RocketDetailLoader = (props: any) => {
 export default function RocketDetail({ navigation, route }: { navigation: any, route: any }) {
     return (
         <View style={styles.container}>
-            <RocketDetailLoader id={route.params.id} />
+            <RocketDetailLoader id={route.params.id} navigation={navigation} />
         </View>
     );
 }
