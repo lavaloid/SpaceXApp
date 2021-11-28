@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, } from 'react-native';
 
+/**
+ * RocketDetailsEntry allows you to show the key and value for
+ * an information. The key is passed in with the `name` prop and
+ * the value is passed in with the `value` prop.
+ */
 export default function RocketDetailsEntry(props: any) {
     return (
         <View style={styles.container}>
