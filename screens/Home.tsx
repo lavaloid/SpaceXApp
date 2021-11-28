@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, ActivityIndicator, FlatList } from 'react-native';
+import { StyleSheet, Text, FlatList } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
 import HomeContainer from '../components/HomeContainer';
 import RocketItem from '../components/RocketItem';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 const ROCKETS_QUERY = gql`
     query GetRocketsOverview {
@@ -22,9 +23,7 @@ const HomeContent = () => {
 
     if (loading) {
         return (
-            <View style={styles.loadingContainer}>
-                <ActivityIndicator size='large' color='#2233ff'/>
-            </View>
+            <LoadingIndicator/>
         );
     }
 
@@ -70,14 +69,6 @@ const styles = StyleSheet.create({
         marginVertical: 30,
         height: 1,
         width: '80%',
-    },
-
-    /* LOADING STYLESHEETS */
-    loadingContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
     },
 
     /* ITEM LIST STYLESHEETS */
