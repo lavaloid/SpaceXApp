@@ -8,6 +8,11 @@ if (Platform.OS === 'android') {
     }
 }
 
+/**
+ * An accordion-like component which can be collapsed or expanded.
+ * The title of the Summary is passed in using the `title` prop, and
+ * the content is the child of the Summary.
+ */
 export default function Summary(props: any) {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -20,7 +25,9 @@ export default function Summary(props: any) {
                 }}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>{props.title}</Text>
-                    <Text style={styles.dropIcon}>&gt;</Text>
+                    <Text style={[styles.dropIcon,
+                        { transform: [{ rotate: isCollapsed ? '0deg' : '180deg' }]}
+                    ]}>V</Text>
                 </View>
             </TouchableHighlight>
             {!isCollapsed && (
