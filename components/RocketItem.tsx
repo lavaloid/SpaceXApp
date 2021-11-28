@@ -1,29 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, View, ImageBackground, Text, TextInput, useWindowDimensions } from "react-native";
+import { StyleSheet, View, ImageBackground, Text, TextInput, useWindowDimensions, TouchableHighlight } from "react-native";
 
 /**
  * Component for rocket items in the home screen.
  */
 export default function RocketItem (props: any) {
-    const [isTouched, setIsTouched] = useState(false);
-    const backgroundColor = isTouched ? '#ddd' : '#fff';
-
     return (
-        <View style={[styles.itemContainer,
-            {backgroundColor: backgroundColor}]}
-            onTouchStart={() => {setIsTouched(true)}}
-            onTouchEnd={() => {setIsTouched(false)}}
-            onTouchCancel={() => {setIsTouched(false)}}>
-            <View style={styles.itemContentContainer}>
-                <Text style={styles.itemTitle}>
-                    {props.name}
-                </Text>
-                <Text style={styles.itemContent}>
-                    {props.country}
-                </Text>
+        <TouchableHighlight onPress={() => {}}>
+            <View style={styles.itemContainer}>
+                <View style={styles.itemContentContainer}>
+                    <Text style={styles.itemTitle}>
+                        {props.name}
+                    </Text>
+                    <Text style={styles.itemContent}>
+                        {props.country}
+                    </Text>
+                </View>
+                <Text style={styles.gotoIcon}>&gt;</Text>
             </View>
-            <Text style={styles.gotoIcon}>&gt;</Text>
-        </View>
+        </TouchableHighlight>
     );
 };
 
