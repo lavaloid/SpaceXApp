@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, ActivityIndicator, ImageBackground, TextInput, FlatList } from 'react-native';
+import { StyleSheet, View, Text, ActivityIndicator, FlatList } from 'react-native';
 import { gql, useQuery } from '@apollo/client';
-import { StatusBar } from 'expo-status-bar';
 import HomeContainer from '../components/HomeContainer';
 import RocketItem from '../components/RocketItem';
 
@@ -23,7 +22,9 @@ const HomeContent = () => {
 
     if (loading) {
         return (
-            <ActivityIndicator />
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size='large' color='#2233ff'/>
+            </View>
         );
     }
 
@@ -69,6 +70,14 @@ const styles = StyleSheet.create({
         marginVertical: 30,
         height: 1,
         width: '80%',
+    },
+
+    /* LOADING STYLESHEETS */
+    loadingContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
     },
 
     /* ITEM LIST STYLESHEETS */
