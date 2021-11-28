@@ -41,10 +41,10 @@ const HomeContent = (props: any) => {
                     onPress={() => {
                         props.navigation.navigate('Details', { id: item.id.toString() })
                     }} />
-        )}
-        keyExtractor={(item) => item.id.toString()}
-        style={styles.itemListContainer}
-      />
+            )}
+            keyExtractor={(item) => item.id.toString()}
+            style={styles.itemListContainer}
+        />
     );
 };
 
