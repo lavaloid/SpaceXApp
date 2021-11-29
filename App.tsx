@@ -5,6 +5,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Home from './screens/Home';
 import RocketDetail from './screens/RocketDetail';
 import RocketImages from './screens/RocketImages';
+import SearchLaunches from './screens/SearchLaunches';
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Details" component={RocketDetail} />
           <Stack.Screen name="Images" component={RocketImages} />
+          <Stack.Screen name="Search" component={SearchLaunches} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>

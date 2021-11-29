@@ -133,7 +133,7 @@ const RocketDetailLoader = (props: any) => {
                         onPress={() => { props.navigation.navigate('Images', { images: images })}}
                         color='#555555' />
                     <Button title='Search launches'
-                        onPress={() => { }}
+                        onPress={() => { props.navigation.navigate('Search', { id: props.id })}}
                         color='#22aa55' />
                 </View>
             </ImageBackground>
