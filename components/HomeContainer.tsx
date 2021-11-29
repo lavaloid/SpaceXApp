@@ -11,13 +11,11 @@ const HomeHeader = () => {
 
     return (
         <View style={[styles.titleContainer,
-            {height: windowHeight * 0.42}]}>
+            {height: windowHeight * 0.35}]}>
             <ImageBackground
                 source={require('../assets/images/title-header.jpg')}
                 style={styles.titleBackgroundImg}
             >
-                <TextInput style={[styles.searchBar, 
-                    {width: windowWidth - 20}]} />
                 <Text style={styles.title}>Read about SpaceX rockets.</Text>
             </ImageBackground>
         </View>
@@ -50,6 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: 'bold',
         marginHorizontal: 30,
+        marginTop: 25,
     },
     titleBackgroundImg: {
         width: '100%',
@@ -60,14 +59,5 @@ const styles = StyleSheet.create({
     titleContainer: {
         width: '100%',
         justifyContent: 'center',
-    },
-    searchBar: {
-        fontSize: 18,
-        borderRadius: 10,
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        paddingVertical: 5,
-        margin: 10,
-        marginTop: 20,
     },
 })
