@@ -13,6 +13,8 @@ if (Platform.OS === 'android') {
  * Screen for searching rocket launches.
  */
 export default function SearchLaunches({ navigation, route }: { navigation: any, route: any }) {
+    const [missionName, setMissionName] = useState('');
+    const [launchYear, setLaunchYear] = useState('');
     const [sortBy, setSortBy] = useState('launch_date_unix');
 
     const windowWidth = useWindowDimensions().width;
@@ -20,10 +22,11 @@ export default function SearchLaunches({ navigation, route }: { navigation: any,
     return (
         <View style={styles.container}>
             <TextInput style={[styles.searchBar, {width: windowWidth - 40}]} 
-                placeholder='Search launches...'/>
+                placeholder='Search launches...' onChangeText={(_missionName) => { setMissionName(_missionName) }}/>
             <View style={styles.yearContainer}>
                 <Text style={styles.label}>Year launched: </Text>
-                <TextInput style={styles.yearInput} keyboardType='number-pad' />
+                <TextInput style={styles.yearInput} keyboardType='number-pad'
+                    onChangeText={(_launchYear) => { setLaunchYear(_launchYear) }} />
             </View>
             <Text style={styles.label}>Sort by: </Text>
             <View style={styles.sortByContainer}>
@@ -48,7 +51,14 @@ export default function SearchLaunches({ navigation, route }: { navigation: any,
                     <Text style={styles.sortByText}>Mission Name</Text>
                 </TouchableHighlight>
             </View>
-            <Button onPress={() => {}} title='Search' />
+            <Button onPress={() => {
+                navigation.navigate('Results', {
+                    id: route.params.id,
+                    missionName: missionName,
+                    launchYear: launchYear,
+                    sort: sortBy,
+                })
+            }} title='Search' />
         </View>
     );
 }
