@@ -10,3 +10,7 @@ To build and run this application:
 3. Install dependencies by running `npm install`.
 4. Go to the project root folder and run `npm start`.
 5. Scan the QR code as shown in the terminal using the Expo Go application.
+
+## License
+
+This software is licensed under [MIT License](https://choosealicense.com/licenses/mit/).
