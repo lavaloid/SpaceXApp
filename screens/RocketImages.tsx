@@ -3,7 +3,10 @@ import { useState } from 'react';
 import { StyleSheet, Text, FlatList, View, Image, TouchableHighlight, useWindowDimensions, Button, Modal, TouchableWithoutFeedback } from 'react-native';
 
 /**
- * The content of the home screen. Includes loading and error handling.
+ * The content of the rocket images screen. The gallery is paginated with 24 images
+ * per page. The prop `images` should contain all URLs from all pages.
+ * 
+ * TODO: Use caching on the FlatList of Images.
  */
 const ImageLoader = (props: any) => {
     const [pageNumber, setPageNumber] = useState(0);
